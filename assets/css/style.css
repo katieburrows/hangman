@@ -12,3 +12,9 @@
 #instructions {
     margin: 0 auto;
 } */
+
+p {
+    /* background-color: purple; */
+    padding: 15px 15px 0px 15px;
+    display: inline;
+}

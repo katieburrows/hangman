@@ -8,7 +8,8 @@ var lettersGuessedArray;
 var previouslyGuessed;
 
 function initializeApp (){
-    var guessesCounter = 10;
+    targetDiv.textContent = "";
+    guessesCounter = 10;
     var lettersGuessedArray = [];
     var previouslyGuessed = false;
    
@@ -21,7 +22,8 @@ function initializeApp (){
 
     //loops through the current word and creates a paragraph for each letter, sets the data- attribute to be the letter of the current character for each element, adds a dash in place of the letter on the page, and finally crams that element onto the page. 
     for (var i = 0; i < currentWord.length; i++){
-        var letterContainer = document.createElement("p");
+        
+        letterContainer = document.createElement("p");
         
         letterContainer.setAttribute("data-letter", currentWord[i]);
         
@@ -57,6 +59,8 @@ document.onkeyup = function(event) {
     }
     if (guessesCounter === 0){
         alert("game over, you lose");
+        losses++;
+        initializeApp();
     }
 
     //loop through to see if the word has been guessed correctly, this creates an array of references to all of the letter paragraphs
@@ -76,15 +80,24 @@ document.onkeyup = function(event) {
     })
     //below would only trigger if the word matched
     if (correct){
+        wins++;
         alert("word matched");
+        initializeApp();
     }
+
+    var winsHTML = "<p>Wins: " + wins + "<p>";
+    document.querySelector("#wins").innerHTML = winsHTML;
+
+    var lossesHTML = "<p>Losses: " + losses + "<p>";
+    document.querySelector("#losses").innerHTML = lossesHTML;
+
 }
 initializeApp();
 
 
     //overwrite the original picture displayed with a picture of the word being guessed.
     //update wins++ and display the total to scoreboard.
-    
+
 //the player loses when there are no more guesses left.
     //overwrite the original picture displayed with a picture of the word being guessed.
     //upadate losses++ and display the total to scoreboard.

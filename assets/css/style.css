@@ -12,7 +12,18 @@
 #instructions {
     margin: 0 auto;
 } */
-
+#game {
+    width: 75%;
+    padding-top: 50px;
+    padding-left: 33%;
+}
+h1 {
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+div {
+    padding-bottom: 10px;
+}
 p {
     /* background-color: purple; */
     padding: 15px 15px 0px 15px;
@@ -24,3 +35,6 @@ img {
     height: 285px;
 }
 
+.credit {
+    font-size: 10px;
+}

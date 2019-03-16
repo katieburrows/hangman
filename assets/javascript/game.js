@@ -100,6 +100,9 @@ initializeApp();
 
     //clean up whole lettersGuessedArray on the page situation.
 
+    //fix alert that says you won displaying before the last guess can be entered for a word.
+        //maybe blow the word up so the user can see what the correct word was before resetting?
+
     //after a word from the array has been played it can no longer be played.
     
     //styling.

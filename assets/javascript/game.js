@@ -1,5 +1,5 @@
 var targetDiv = document.getElementById("letterDisplay");
-var wordArray = ["volcano", "earthquake", "tsunami", "hurricane", "tornado", "flood", "fire"];
+var wordArray = ["volcano", "earthquake", "tsunami", "hurricane", "tornado", "flood", "fire", "blizzard", "mudflow", "mudslide", "avalanche", "cyclone", "typhoon", "bushfire", "sinkhole"];
 var wins = 0;
 var losses = 0;
 var currentWord;
@@ -10,7 +10,9 @@ var previouslyGuessed;
 function initializeApp (){
     targetDiv.textContent = "";
     guessesCounter = 10;
-    var lettersGuessedArray = [];
+    lettersGuessedArray = [];
+    
+    document.querySelector("#userGuessArray").innerHTML = lettersGuessedArray.join(", ");
     var previouslyGuessed = false;
    
     document.querySelector("#guessCounter").innerHTML = "Guesses remaining: " + guessesCounter;
@@ -39,9 +41,9 @@ document.onkeyup = function(event) {
     //var correct is the flag that is checked against to make sure that the letter guessed is part of the current word.
     var correct = true;
     var userKeyPress = event.key;
+    if(lettersGuessedArray.indexOf(userKeyPress) === -1){
     lettersGuessedArray.push(userKeyPress);
-    var lettersGuessedArrayDisplay = "<p>letters already guessed: " + lettersGuessedArray  + " </p>";
-    document.querySelector("#userGuessArray").innerHTML = lettersGuessedArray;
+    document.querySelector("#userGuessArray").innerHTML = lettersGuessedArray.join(`, &nbsp;`);
 
     //querySelectorAll gives back an array.  If the user enters a guess that isn't correct then var matches will be returned as an empty array.  If there is a correct guess then matches will return an array full of the letter(s).  For example if the word had double letters ("volcano"): matches would then be set to two <p>s that match and now matches is the pointer to those <p>s.
     var matches = document.querySelectorAll("[data-letter='" + userKeyPress.toLowerCase() + "']");
@@ -52,13 +54,13 @@ document.onkeyup = function(event) {
     });
 
     //checks to see if matches' length is 0, if it is 0 that means that the querySelectorAll returned an empty array which in turn means that the guess was wrong.  Take away one guess from the guess counter
-    if (!matches.length){
+    if (!matches.length && lettersGuessedArray.indexOf(userKeyPress) === lettersGuessedArray.length - 1){
         guessesCounter--;
         var loseAGuess = "<p>Guesses remaining: " + guessesCounter + "<p>";
         document.querySelector("#guessCounter").innerHTML = loseAGuess;     
     }
     if (guessesCounter === 0){
-        alert("game over, you lose");
+        alert("game over, you lose, the correct word was: " + currentWord.join(""));
         losses++;
         lettersGuessedArray = [];
         initializeApp();
@@ -82,9 +84,13 @@ document.onkeyup = function(event) {
     //below would only trigger if the word matched
     if (correct){
         wins++;
-        alert("word matched");
         lettersGuessedArray = [];
-        initializeApp();
+        setTimeout(function(){
+            alert("word matched");
+            initializeApp();
+        }, 50);
+        
+        
     }
 
     var winsHTML = "<p>Wins: " + wins + "</p>";
@@ -93,6 +99,13 @@ document.onkeyup = function(event) {
     var lossesHTML = "<p>Losses: " + losses + "</p>";
     document.querySelector("#losses").innerHTML = lossesHTML;
 
+
+
+
+
+
+}
+    
 }
 initializeApp();
 

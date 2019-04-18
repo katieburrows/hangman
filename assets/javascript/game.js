@@ -6,6 +6,7 @@ var currentWord;
 var guessesCounter = 10;
 var lettersGuessedArray = [];
 var previouslyGuessed;
+var previousWord;
 
 function initializeApp (){
     targetDiv.textContent = "";
@@ -19,8 +20,11 @@ function initializeApp (){
 
     //generates a random word from the wordArray, splits the word on each character
     currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+    while (previousWord === currentWord){
+        currentWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+    }
     currentWord = currentWord.split("");
-
+    previousWord = currentWord.join("");
     console.log(currentWord);
 
     //loops through the current word and creates a paragraph for each letter, sets the data- attribute to be the value of the current character for each element, adds a dash in place of the letter on the page, and finally crams that element onto the page. 
@@ -41,6 +45,9 @@ document.onkeyup = function(event) {
     //var correct is the flag that is checked against to make sure that the letter guessed is part of the current word.
     var correct = true;
     var userKeyPress = event.key;
+    if (userKeyPress.toLowerCase().match(/[a-z]/) === null || userKeyPress.length !== 1){
+        return false;
+    }
     if(lettersGuessedArray.indexOf(userKeyPress) === -1){
     lettersGuessedArray.push(userKeyPress);
     document.querySelector("#userGuessArray").innerHTML = lettersGuessedArray.join(`, &nbsp;`);

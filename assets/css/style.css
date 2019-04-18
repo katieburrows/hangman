@@ -38,3 +38,13 @@ img {
 .credit {
     font-size: 10px;
 }
+body {
+    width: 80%;
+    margin: 0 auto;   
+    background-image: url(../images/backgroundImage.jpg);
+    /* Photo by David Besh from Pexels */
+    background-repeat: no-repeat; 
+    background-attachment: scroll;
+    background-size: cover;
+    color: #ffffff
+}

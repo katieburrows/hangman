@@ -41,6 +41,9 @@ img {
 footer {
     background-color: #cce6ff;
     text-align: center;
-    bottom: 0px;
-    position: relative;
+    bottom: 0%;
+    position: absolute;
+    width: 100%;
+    margin-left: -10%;
+    padding: 30px;
 }

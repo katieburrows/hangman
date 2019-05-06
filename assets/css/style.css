@@ -1,17 +1,13 @@
-/* body {
-    background-color: purple;
+body {
+    width: 80%;
+    margin: 0 auto;   
+    background-image: url(../images/backgroundImage.jpg);
+    /* Photo by David Besh from Pexels */
+    background-repeat: no-repeat; 
+    background-attachment: scroll;
+    background-size: cover;
+    color: #ffffff
 }
-
-#title {
-    height: 150px;
-    width: 300px;  
-    background-color: white;
-    margin: 0 auto;
-}
-
-#instructions {
-    margin: 0 auto;
-} */
 #game {
     width: 75%;
     padding-top: 50px;
@@ -37,14 +33,4 @@ img {
 
 .credit {
     font-size: 10px;
-}
-body {
-    width: 80%;
-    margin: 0 auto;   
-    background-image: url(../images/backgroundImage.jpg);
-    /* Photo by David Besh from Pexels */
-    background-repeat: no-repeat; 
-    background-attachment: scroll;
-    background-size: cover;
-    color: #ffffff
 }
